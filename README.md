@@ -7,8 +7,6 @@ This website can be accessed only by owning an NFT in a specific ERC-721 NFT con
 1. Copy `.env.example` as `.env`
 1. Create a [WalletConnect Cloud](https://walletconnect.com/) project and get its project ID. Set it to `.env`
 1. Input the desired ERC-721 contract address in `.env`
-1. Input the used RPC provider in `.env`, for the used network
-1. Change the desired network in index.tsx (search for `TODO`)
 
 ## Getting Started
 
@@ -16,10 +14,6 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the

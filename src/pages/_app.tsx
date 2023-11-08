@@ -19,18 +19,8 @@ if (!process.env.NEXT_PUBLIC_PROVIDER_URL) {
   console.error("No provider specified. Fix your .env");
 }
 
-// TODO: change this
-const usedNetwork = {
-  chainId: 11155111,
-  name: "Sepolia",
-  currency: "ETH",
-  explorerUrl: "https://sepolia.etherscan.io",
-  rpcUrl: process.env.NEXT_PUBLIC_PROVIDER_URL!,
-};
-
 createWeb3Modal({
   ethersConfig: defaultConfig({ metadata }),
-  chains: [usedNetwork],
   projectId,
 });
 
