@@ -4,29 +4,9 @@ import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { WagmiConfig } from "wagmi";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import {
-  arbitrum,
-  avalanche,
-  bsc,
-  fantom,
-  gnosis,
-  mainnet,
-  optimism,
-  polygon,
-} from "wagmi/chains";
+import { sepolia, pulsechain } from "wagmi/chains";
 
-const chains = [
-  mainnet,
-  polygon,
-  avalanche,
-  arbitrum,
-  bsc,
-  optimism,
-  gnosis,
-  fantom,
-];
-
-// 1. Get projectID at https://cloud.walletconnect.com
+const chains = [sepolia, pulsechain];
 
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || "";
 
