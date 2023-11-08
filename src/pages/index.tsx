@@ -35,25 +35,25 @@ export default function Home() {
     webSocketPublicClient,
   });
 
-  const { address, isConnected } = useAccount();
+  //   const { address, isConnected } = useAccount();
 
-  const nft = process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS;
-  console.log("using nft", nft);
+  //   const nft = process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS;
+  //   console.log("using nft", nft);
 
-  const { data, isError, isLoading } = useContractRead({
-    address: nft as `0x${string}`,
-    abi: [
-      {
-        name: "balanceOf",
-        inputs: [{ name: "owner", type: "address" }],
-        outputs: [{ name: "balance", type: "uint256" }],
-        stateMutability: "view",
-        type: "function",
-      },
-    ],
-    functionName: "balanceOf",
-    args: [address],
-  });
+  //   const { data, isError, isLoading } = useContractRead({
+  //     address: nft as `0x${string}`,
+  //     abi: [
+  //       {
+  //         name: "balanceOf",
+  //         inputs: [{ name: "owner", type: "address" }],
+  //         outputs: [{ name: "balance", type: "uint256" }],
+  //         stateMutability: "view",
+  //         type: "function",
+  //       },
+  //     ],
+  //     functionName: "balanceOf",
+  //     args: [address],
+  //   });
 
   const valid = (
     <>
@@ -170,10 +170,10 @@ export default function Home() {
     </>
   );
 
-  if (data && BigInt(data as any) > 0) {
-    console.log("Access allowed");
-    return valid;
-  } else {
+  /*   if (data && BigInt(data as any) > 0) {
+    console.log("Access allowed"); */
+  return valid;
+  /*  } else {
     return "Access denied";
-  }
+  } */
 }
