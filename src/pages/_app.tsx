@@ -1,12 +1,7 @@
 import "@/styles/globals.css";
-import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
-
-import { WagmiConfig } from "wagmi";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import { sepolia, pulsechain } from "wagmi/chains";
-
-const chains = [sepolia, pulsechain];
+import { createWeb3Modal, defaultConfig } from "@web3modal/ethers5/react";
 
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID || "";
 
@@ -20,10 +15,24 @@ const metadata = {
 if (!process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS) {
   console.error("No NFT address specified. Fix your .env");
 }
+if (!process.env.NEXT_PUBLIC_PROVIDER_URL) {
+  console.error("No provider specified. Fix your .env");
+}
 
-const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata });
+// TODO: change this
+const usedNetwork = {
+  chainId: 11155111,
+  name: "Sepolia",
+  currency: "ETH",
+  explorerUrl: "https://sepolia.etherscan.io",
+  rpcUrl: process.env.NEXT_PUBLIC_PROVIDER_URL!,
+};
 
-createWeb3Modal({ wagmiConfig, projectId, chains });
+createWeb3Modal({
+  ethersConfig: defaultConfig({ metadata }),
+  chains: [usedNetwork],
+  projectId,
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   const [ready, setReady] = useState(false);
@@ -34,9 +43,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       {ready ? (
-        <WagmiConfig config={wagmiConfig}>
+        <>
           <Component {...pageProps} />
-        </WagmiConfig>
+        </>
       ) : null}
     </>
   );
